@@ -47,7 +47,7 @@ function fill_image() {
         for (let j = 1; j < 4; j++) {
             let img = img_array[new_array[index_new_array]];//select an img tag from array with the randon index
             console.log(img);
-            img.setAttribute("src", "/media/2/fila-" + i + "-col-" + j + ".jpg");
+            img.setAttribute("src", "/media/1/fila-" + i + "-col-" + j + ".jpg");
             index_new_array++;
         }
     }
