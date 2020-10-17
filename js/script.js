@@ -5,7 +5,7 @@ const btn = document.getElementById("btn");
 
 //obtiene numero random
 const getRandom = () => {
-    return num = Math.floor(Math.random() * 9 )
+    return num = Math.floor(Math.random() * 9)
 }
 
 //fill an array with 0-8 unordered
@@ -45,9 +45,9 @@ function fill_image() {
     let index_new_array = 0;
     for (let i = 1; i < 4; i++) {
         for (let j = 1; j < 4; j++) {
-            let img =  img_array[new_array[index_new_array]];//select an img tag from array with the randon index
+            let img = img_array[new_array[index_new_array]];//select an img tag from array with the randon index
             console.log(img);
-            img.setAttribute("src","/media/fila-" + i + "-col-" + j + ".jpg");
+            img.setAttribute("src", "/media/fila-" + i + "-col-" + j + ".jpg");
             index_new_array++;
         }
     }
@@ -62,57 +62,58 @@ btn.addEventListener('click', () => {
 
 // DnD Api
 document.addEventListener('DOMContentLoaded', (event) => {
-var dragSrcEl = null;
+    var dragSrcEl = null;
+    let items = document.querySelectorAll('section .item');
 
     function handleDragStart(e) {
-      this.style.opacity = '1';
-      dragSrcEl = this;
+        this.style.opacity = '1';
+        dragSrcEl = this;
 
-      e.dataTransfer.effectAllowed = 'move';
-      e.dataTransfer.setData('text/html', this.innerHTML);
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
     }
-  
     function handleDragEnd(e) {
-      this.style.opacity = '1';
-  
-      items.forEach(function (item) {
-        item.classList.remove('over');
-      });
+        this.style.opacity = '1';
+
+        items.forEach(function (item) {
+            item.classList.remove('over');
+        });
     }
-  
+
     function handleDragOver(e) {
-      if (e.preventDefault) {
-        e.preventDefault();
-      }
-      e.dataTransfer.dropEffect = 'move';
-      return false;
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
+        e.dataTransfer.dropEffect = 'move';
+        return false;
     }
-  
+
     function handleDragEnter(e) {
-      this.classList.add('over');
+        this.classList.add('over');
     }
-  
+
     function handleDragLeave(e) {
-      this.classList.remove('over');
+        this.classList.remove('over');
     }
     function handleDrop(e) {
         if (e.stopPropagation) {
             e.stopPropagation(); // stops the browser from redirecting.
-          }
+        }
         if (dragSrcEl !== this) {
             dragSrcEl.innerHTML = this.innerHTML;
             this.innerHTML = e.dataTransfer.getData('text/html');
-          }
+        }
         return false;
-      }
-  
-    let items = document.querySelectorAll('section .item');
-    items.forEach(function(item) {
-      item.addEventListener('dragstart', handleDragStart, false);
-      item.addEventListener('dragover', handleDragOver, false);
-      item.addEventListener('dragenter', handleDragEnter, false);
-      item.addEventListener('dragleave', handleDragLeave, false);
-      item.addEventListener('drop', handleDrop, false);
-    item.addEventListener('dragend', handleDragEnd, false);
+    }
+
+    
+    items.forEach(function (item) {
+        item.addEventListener('dragstart', handleDragStart, false);
+        item.addEventListener('dragover', handleDragOver, false);
+        item.addEventListener('dragenter', handleDragEnter, false);
+        item.addEventListener('dragleave', handleDragLeave, false);
+        item.addEventListener('drop', handleDrop, false);
+        item.addEventListener('dragend', handleDragEnd, false);
     });
-  });
+});
+
