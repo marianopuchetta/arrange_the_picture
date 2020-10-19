@@ -2,6 +2,14 @@
 //                   "fila-2-col-1.jpg","fila-2-col-2.jpg","fila-2-col-3.jpg",
 //                   "fila-3-col-1.jpg","fila-3-col-2.jpg","fila-3-col-3.jpg",]
 const btn = document.getElementById("btn");
+ var pics = document.getElementById('pics');
+var pics_to_show = 1;
+ $(function() {
+    $('body #pics').on('click', 'img', function(){
+        pics_to_show = $(this).attr('id')
+        fill_image(pics_to_show)
+      })
+  });
 
 //obtiene numero random
 const getRandom = () => {
@@ -39,29 +47,23 @@ let fillArray = () => {
 
 
 // fill the image using setAttribute
-function fill_image() {
+function fill_image(number) {
     let new_array = fillArray();//array with indexs unordered 0-8
-    let img_array = document.getElementsByTagName('img');//all img tags
+    let img_array = document.getElementsByClassName('img');//all img tags
     let index_new_array = 0;
     for (let i = 1; i < 4; i++) {
         for (let j = 1; j < 4; j++) {
             let img = img_array[new_array[index_new_array]];//select an img tag from array with the randon index
             console.log(img);
-            img.setAttribute("src", "/media/1/fila-" + i + "-col-" + j + ".jpg");
+            img.setAttribute("src", "/media/" + number + "/fila-" + i + "-col-" + j + ".jpg");
             index_new_array++;
         }
     }
 }
 
-
-//
-btn.addEventListener('click', () => {
-    console.log('click')
-    fill_image();
-})
-
 // DnD Api
 document.addEventListener('DOMContentLoaded', (event) => {
+    fill_image(pics_to_show);
     var dragSrcEl = null;
     let items = document.querySelectorAll('section .item');
 
