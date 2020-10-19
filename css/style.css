@@ -44,8 +44,11 @@ img{
   }
 
   @media only screen and (max-width: 768px){
+    #pics{
+        padding: 1vh 0vh 1vh 3vh!important; 
+     }
     section{
-        padding: 10vh 3vh;
+        padding: 0vh 6vh;
     }
     .item{
         width: 100%;
